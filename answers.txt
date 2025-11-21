@@ -1,0 +1,67 @@
+
+1) fork() Program Explanation
+The program uses the fork() system call to create a new process.  
+After fork() is called, the program splits into two processes:
+- The child process (fork returns 0)
+- The parent process (fork returns the PID of the child)
+
+Each process prints its own message to show that both are running separately.
+
+
+
+2) Starting a Process in the Background
+Using: sleep 300 &
+This runs the process in the background so the terminal stays free.
+The command "jobs" shows the background processes.
+
+
+
+3) Stopping a Process
+I use:
+ps aux | grep sleep  
+to find the PID of the sleep process.
+
+Then I stop it using:
+kill <PID>
+
+I run the grep command again to confirm it is stopped.
+
+
+4) Pausing and Resuming a Process
+To pause:
+kill -STOP <PID>
+
+To resume:
+kill -CONT <PID>
+
+This stops the process without killing it.
+
+
+5) The Job of the Linker
+The linker combines multiple object files into one executable file.
+In the example:
+- file1.c contains the function hello()
+- file2.c contains main() and calls hello()
+The linker connects both files so the final program can run.
+
+
+
+6) The Job of the Loader
+The loader runs when I execute the program.  
+It loads the program into memory and loads the shared libraries it needs.
+
+Using:
+ldd simple_program
+I can see which shared libraries the program uses at runtime.
+
+
+
+7) Makefile
+The Makefile compiles:
+- process_creation.c
+- file1.c + file2.c (output_program)
+- simple_program.c
+
+It also includes a clean rule to remove the executables.
+
+
